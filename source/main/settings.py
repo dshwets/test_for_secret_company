@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'common',
     'accounts',
     'bootstrap4',
+    'news',
+    'newscategories'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
