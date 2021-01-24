@@ -18,6 +18,6 @@
             {% endif %}
         <h3 class="my-5">{% trans 'Вы уверены, что хотите удалить категорию ' %}{{ category.title }} ?</h3>
         <input class="btn btn-danger" type="submit" id="confirm-delete-btn" value="{% trans 'Да' %}">
-        <a class="btn btn-primary" href="{% url 'news:list_newscategories' %}">{% trans 'Нет' %}</a>
+        <a class="btn btn-primary" href="{% url 'newscategories:list_newscategory' %}">{% trans 'Нет' %}</a>
     </form>
 {% endblock %}

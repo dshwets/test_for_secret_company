@@ -6,7 +6,7 @@
  {% endblock %}
 
 {% block content %}
- <a href="{% url 'news:create_newscategories' %}">
+ <a href="{% url 'newscategories:create_newscategory' %}">
         <button type="button" class="btn btn-outline-secondary">{% trans 'Cоздать категорию' %}</button>
     </a>
 <div class="row row-cols-1 row-cols-md-3 mt-5">
@@ -22,10 +22,10 @@
             {% endif %}
             <div class="card-body">
             <h5 class="card-title">{{ category.title }}</h5>
-            <a href="{% url 'news:delete_newscategories' pk=category.pk %}" class="btn btn-danger">
+            <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
                 {% trans 'Удалить' %}
             </a>
-            <a href="{% url 'news:update_newscategories' pk=category.pk %}" class="btn btn-secondary">
+            <a href="{% url 'newscategories:update_newscategory' pk=category.pk %}" class="btn btn-secondary">
                 {% trans 'Редактировать' %}
             </a>
             </div>
