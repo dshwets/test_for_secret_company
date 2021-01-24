@@ -22,6 +22,9 @@
             {% endif %}
             <div class="card-body">
             <h5 class="card-title">{{ category.title }}</h5>
+            <a href="{% url 'news:delete_newscategories' pk=category.pk %}" class="btn btn-danger">
+                {% trans 'Удалить' %}
+            </a>
             </div>
         </div>
 </div>
