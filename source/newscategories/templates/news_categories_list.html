@@ -25,6 +25,9 @@
             <a href="{% url 'news:delete_newscategories' pk=category.pk %}" class="btn btn-danger">
                 {% trans 'Удалить' %}
             </a>
+            <a href="{% url 'news:update_newscategories' pk=category.pk %}" class="btn btn-secondary">
+                {% trans 'Редактировать' %}
+            </a>
             </div>
         </div>
 </div>
