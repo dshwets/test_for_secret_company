@@ -10,7 +10,18 @@ class ArticleFactory(factory.django.DjangoModelFactory):
         model = Article
 
     category_id = None
-    user_id = factory.SubFactory(UserFactory)
-    title = FuzzyText(length=50)
-    description = FuzzyText(length=50)
-    image = None
+
+    user_id = factory.SubFactory(
+        UserFactory,
+        username=FuzzyText(length=50)
+    )
+
+    title = factory.Sequence(
+        lambda n: f'Title-{n}'
+    )
+
+    description = FuzzyText(
+        length=150
+    )
+
+    image = factory.django.ImageField()
