@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Регистрация"%}{% endblock %}
+{% block registry_is_active %}active{% endblock %}
+{% block content %}
+
+    <h1>{% trans "Регистрация" %}</h1>
+    {% include 'partial/bootstrap_form.html' with form_method='post' button_text="Зарегистрироваться" %}
+{% endblock %}
