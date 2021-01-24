@@ -6,9 +6,11 @@
  {% endblock %}
 
 {% block content %}
- <a href="{% url 'newscategories:create_newscategory' %}">
-        <button type="button" class="btn btn-outline-secondary">{% trans 'Cоздать категорию' %}</button>
-    </a>
+{% if perms.newscategories.can_add_category %}
+     <a href="{% url 'newscategories:create_newscategory' %}">
+            <button type="button" class="btn btn-outline-secondary">{% trans 'Cоздать категорию' %}</button>
+        </a>
+{% endif %}
 <div class="row row-cols-1 row-cols-md-3 mt-5">
         {% for category in categories %}
         <div class="col mb-4">
@@ -22,12 +24,16 @@
             {% endif %}
             <div class="card-body">
             <h5 class="card-title">{{ category.title }}</h5>
-            <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
-                {% trans 'Удалить' %}
-            </a>
-            <a href="{% url 'newscategories:update_newscategory' pk=category.pk %}" class="btn btn-secondary">
-                {% trans 'Редактировать' %}
-            </a>
+            {% if perms.newscategories.can_delete_category or category.created_by == request.user %}
+                <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
+                    {% trans 'Удалить' %}
+                </a>
+            {% endif %}
+            {% if perms.newscategories.can_change_category or category.created_by == request.user %}
+                <a href="{% url 'newscategories:update_newscategory' pk=category.pk %}" class="btn btn-secondary">
+                    {% trans 'Редактировать' %}
+                </a>
+            {% endif %}
             </div>
         </div>
 </div>
