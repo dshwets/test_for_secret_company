@@ -13,9 +13,10 @@
             <div class="card">
             {% if category.image %}
                 <img src="{{ category.image.url }}" class="card-img-top" alt="{% trans 'Изображение категории'%}"
-                     width='350px' height="200px">
+                     width='350' height="200">
             {% else %}
-                <img src="{% static 'img/news.jpg' %}" class="card-img-top" alt="{% trans 'Изображение категории'%}">
+                <img src="{% static 'img/news.jpg' %}" class="card-img-top" alt="{% trans 'Изображение категории'%}"
+                    width='350' height="200">
             {% endif %}
             <div class="card-body">
             <h5 class="card-title">{{ category.title }}</h5>
