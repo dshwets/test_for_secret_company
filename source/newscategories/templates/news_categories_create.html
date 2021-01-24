@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Создание категории' %}{% endblock %}
+{% block content %}
+    <h1>{% trans 'Создание категории' %}</h1>
+    {% trans 'Создать категорию' as button_text %}
+    {% include  'partial/bootstrap_form.html' with form_method='POST' button_text=button_text enctype="multipart/form-data" %}
+{% endblock %}
