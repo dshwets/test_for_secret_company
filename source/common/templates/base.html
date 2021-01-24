@@ -25,12 +25,26 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">{% trans 'Свежие' %}<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">{% trans 'Свежие' %}</a>
                 </li>
-            </ul>
+
             {% block navs %}
 
             {% endblock %}
+            {% if request.user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">{% trans 'Выйти' %}</a>
+                </li>
+            {% else %}
+                <li class="nav-item {% block login_is_active %}{% endblock %}  ml-3">
+                <a class="nav-link" href="{% url 'accounts:login' %}">{% trans 'Войти' %}</a>
+                </li>
+                <li class="menu-right"></li>
+                <a class="nav-link {% block registry_is_active %}{% endblock %}"
+                href="{% url 'accounts:register' %}">{% trans 'Регистрация' %}</a>
+
+            {% endif %}
+            </ul>
             <span class="navbar-text">
             Navbar text with an inline element
             </span>
