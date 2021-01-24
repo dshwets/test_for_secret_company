@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Удаление категории' %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% if category.image %}
+                <img src="{{ category.image.url }}" class="card-img-top col-md-4" alt="{% trans 'Изображение категории'%}"
+                     width='350' height="200">
+            {% else %}
+                <img src="{% static 'img/news.jpg' %}" class="card-img-top col-md-4" alt="{% trans 'Изображение категории'%}"
+                    width='350' height="200">
+            {% endif %}
+        <h3 class="my-5">{% trans 'Вы уверены, что хотите удалить категорию ' %}{{ category.title }} ?</h3>
+        <input class="btn btn-danger" type="submit" id="confirm-delete-btn" value="{% trans 'Да' %}">
+        <a class="btn btn-primary" href="{% url 'news:list_newscategories' %}">{% trans 'Нет' %}</a>
+    </form>
+{% endblock %}
