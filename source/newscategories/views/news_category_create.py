@@ -1,12 +1,12 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
 
-from newscategories.forms import CategoryForm
+from common.views.created_by_create_view import CreatedByCreateView
+from newscategories.forms import CategoryCreateForm
 from newscategories.models import Category
 
 
-class NewsCategoryCreateView(CreateView):
+class NewsCategoryCreateView(CreatedByCreateView):
     template_name = 'news_category_create.html'
-    form_class = CategoryForm
+    form_class = CategoryCreateForm
     model = Category
     success_url = reverse_lazy('newscategories:list_newscategory')
