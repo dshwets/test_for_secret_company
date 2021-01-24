@@ -1,0 +1,85 @@
+.checkbox-form {
+    padding-left: 5px;
+    padding-top: 5px;
+    margin-bottom: 3px;
+}
+
+.checkbox-form li {
+    list-style: none;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination a, .pagination .btn .btn-primary .btn-secondary {
+    display: inline-block;
+}
+
+.pagination .current-page {
+    display: inline-block;
+}
+
+.pagination .current-page input {
+    width: 50px;
+    padding: 5px 7px;
+    font-size: inherit;
+    border-radius: 5px;
+    text-align: center;
+    border: solid 1px gray;
+}
+
+.box {
+    box-sizing: border-box;
+    border: solid 1px gray;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.mass-actions {
+    text-align: right;
+}
+
+input[type='submit']:hover {
+    cursor: pointer;
+}
+
+.avatar {
+    display: inline-block;
+    float: left;
+    width: 250px;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+.error {
+    font-weight: bold;
+    color: red;
+    margin-top: 2px;
+}
+
+.form-input {
+    border-radius: 5px;
+    border: solid 1px lightgray;
+    background: gray;
+    color: white;
+    padding: 3px 5px;
+}
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
