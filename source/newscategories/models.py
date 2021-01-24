@@ -15,6 +15,13 @@ class Category(models.Model):
         on_delete=models.SET_NULL,
     )
 
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        verbose_name=_('Изображение'),
+        upload_to='category_images',
+    )
+
     def __str__(self):
         return f'{self.title}'
 
