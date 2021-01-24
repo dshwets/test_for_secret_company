@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Войти{% endblock %}
+{% block login_is_active %}active{% endblock %}
+{% block content %}
+
+    <h1>Вход</h1>
+    {% include 'partial/bootstrap_form.html' with form_method='post' button_text='Войти' %}
+{% endblock %}
