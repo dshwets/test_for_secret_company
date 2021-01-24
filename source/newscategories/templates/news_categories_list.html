@@ -6,9 +6,11 @@
  {% endblock %}
 
 {% block content %}
-
-<div class="row row-cols-1 row-cols-md-3">
-    {% for category in categories %}
+ <a href="{% url 'news:create_newscategories' %}">
+        <button type="button" class="btn btn-outline-secondary">{% trans 'Cоздать категорию' %}</button>
+    </a>
+<div class="row row-cols-1 row-cols-md-3 mt-5">
+        {% for category in categories %}
         <div class="col mb-4">
             <div class="card">
             {% if category.image %}
