@@ -11,9 +11,6 @@ class CategoriesFactory(factory.django.DjangoModelFactory):
         lambda n: f'Title-{n}'
     )
 
-    parent_id = factory.SubFactory(
-        'source.newscategories.factories.CategoriesFactory',
-        parent_id=None
-    )
+    parent_id = None
 
     image = factory.django.ImageField()
