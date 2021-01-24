@@ -37,6 +37,7 @@ class Article(models.Model):
         null=True,
         blank=True,
         verbose_name=_('Изображение'),
+        upload_to='news_images',
     )
 
     def __str__(self):
