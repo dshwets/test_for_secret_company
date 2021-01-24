@@ -1,6 +1,5 @@
 import factory
-from factory import PostGenerationMethodCall
-from factory.fuzzy import FuzzyText
+from factory import PostGenerationMethodCall, Sequence
 
 from accounts.models import User
 
@@ -9,5 +8,5 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    username = FuzzyText(length=50)
+    username = Sequence(lambda n: f'Username{n}')
     password = PostGenerationMethodCall('set_password', 'pass')
