@@ -3,7 +3,7 @@ import factory
 from newscategories.models import Category
 
 
-class CategoriesFactory(factory.Factory):
+class CategoriesFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Category
 
