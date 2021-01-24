@@ -15,3 +15,5 @@ class CategoriesFactory(factory.django.DjangoModelFactory):
         'source.newscategories.factories.CategoriesFactory',
         parent_id=None
     )
+
+    image = factory.django.ImageField()
