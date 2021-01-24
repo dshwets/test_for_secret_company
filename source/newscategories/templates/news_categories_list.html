@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ {% endblock %}
+
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-3">
+    {% for category in categories %}
+        <div class="col mb-4">
+            <div class="card">
+            {% if category.image %}
+                <img src="{{ category.image.url }}" class="card-img-top" alt="{% trans 'Изображение категории'%}"
+                     width='350px' height="200px">
+            {% else %}
+                <img src="{% static 'img/news.jpg' %}" class="card-img-top" alt="{% trans 'Изображение категории'%}">
+            {% endif %}
+            <div class="card-body">
+            <h5 class="card-title">{{ category.title }}</h5>
+            </div>
+        </div>
+</div>
+  {% endfor %}
+</div>
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
