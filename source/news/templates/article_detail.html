@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ {% endblock %}
+
+{% block content %}
+                <h5 class="card-title">: <b>{{ article.title }}</b></h5>
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
+                             width='350' height="200">
+                    {% else %}
+                        <img src="{% static 'img/article_default.jpg' %}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
+                            width='600px' height="300px">
+                    {% endif %}
+                <p>{% trans 'текст статьи' %}:</p>
+                <pre class="pre-wrapper">{{ article.description }}</pre>
+                <p>{% trans 'Автор' %}:
+                    {% if perms.accounts.can_view_user or article.user_id == request.user %}
+                        <a href="{% url 'accounts:account_detail' pk=article.user_id.pk %}">
+                            {{ article.user_id }}
+                        </a>
+                    {% else %}
+                        {{ article.user_id }}
+                    {% endif %}
+                </p>
+                <p>{% trans 'Категория' %}:
+                    {% if perms.newscategories.can_view_category %}
+                    <a href="{% url 'news:article_category_list' pk=article.category_id.pk %}">
+                        {{ article.category_id }}
+                    </a>
+                    {% else %}
+                        {{ article.category_id }}
+                    {% endif %}
+                </p>
+{% endblock %}
