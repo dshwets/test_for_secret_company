@@ -29,6 +29,11 @@
                         <a class="nav-link" href="{% url 'news:article_list' %}">{% trans 'Свежие новости' %}</a>
                     </li>
                 {% endif %}
+                {% if perms.news.can_create_article %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'news:article_create' %}">{% trans 'Создать статью' %}</a>
+                    </li>
+                {% endif %}
                 {% if perms.accounts.can_view_user %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'accounts:account_list' %}">{% trans 'Список пользователей' %}</a>
