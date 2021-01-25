@@ -11,13 +11,13 @@
         <div class="col mb-4">
             <div class="card bg-light mb-3">
             <div class="card-body">
-                <h5 class="card-title"> <b>{% trans 'Псевдоним' %}:</b> {{ account.username }}</h5>
-                {% if account.get_full_name %}
-                    <p>{% trans 'ФИО' %}: {{ account.get_full_name }}</p>
-                {% endif %}
+                <h5 class="card-title">
+                    <b>{% trans 'Псевдоним' %}:</b>
+                    <a href="{% url 'accounts:account_detail' pk=account.pk %}">
+                        {{ account.username }}
+                    </a>
+                </h5>
                 <p>{% trans 'Был создан' %}: {{ account.created_at }}</p>
-                <p>{% trans 'Был обновлен' %}: {{ account.updated_at }}</p>
-
                 {% if perms.accounts.can_delete_user %}
                     <a href="{% url 'accounts:account_delete' pk=account.pk %}" class="btn btn-danger">
                         {% trans 'Удалить' %}
