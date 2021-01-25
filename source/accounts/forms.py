@@ -15,4 +15,18 @@ class MyUserCreationForm(UserCreationForm):
             'password2',
             'first_name',
             'last_name',
+            'email'
+        ]
+
+
+class MyUserUpdateForm(forms.ModelForm):
+    username = forms.CharField(label=_('Псевдоним'))
+
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+        fields = [
+            'username',
+            'first_name',
+            'last_name',
+            'email'
         ]
