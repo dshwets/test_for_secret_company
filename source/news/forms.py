@@ -1,3 +1,5 @@
+from django import forms
+
 from common.forms import AbstractCreatedByForm
 from news.models import Article
 
@@ -18,3 +20,14 @@ class ArticleCreateForm(AbstractCreatedByForm):
         if commit:
             form.save()
         return form
+
+
+class ArticleUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = [
+            'category_id',
+            'title',
+            'description',
+            'image',
+        ]
