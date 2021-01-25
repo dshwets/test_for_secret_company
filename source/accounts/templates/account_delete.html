@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Удаление пользователя' %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h3 class="my-5">{% trans 'Вы уверены, что хотите удалить пользователя ' %}: {{ account.username }} ?</h3>
+        {% if account.get_full_name %}
+            <p>{% trans 'ФИО' %}: {{ account.get_full_name }}</p>
+        {% endif %}
+        <p>{% trans 'Был создан' %}: {{ account.created_at }}</p>
+        <p>{% trans 'Был обновлен' %}: {{ account.updated_at }}</p>
+        <input class="btn btn-danger" type="submit" id="confirm-delete-btn" value="{% trans 'Да' %}">
+{#        TODO изменить юрл на детальный просмотр#}
+        <a class="btn btn-primary" href="{% url 'accounts:account_list' %}">{% trans 'Нет' %}</a>
+    </form>
+{% endblock %}
