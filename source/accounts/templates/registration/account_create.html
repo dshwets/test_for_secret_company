@@ -6,5 +6,6 @@
 {% block content %}
 
     <h1>{% trans "Регистрация" %}</h1>
-    {% include 'partial/bootstrap_form.html' with form_method='post' button_text="Зарегистрироваться" %}
+    {% trans 'Зарегистироваться' as button_text%}
+    {% include 'partial/bootstrap_form.html' with form_method='post' button_text=button_text enctype="multipart/form-data"%}
 {% endblock %}

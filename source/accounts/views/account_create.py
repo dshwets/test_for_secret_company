@@ -7,7 +7,7 @@ from accounts.forms import MyUserCreationForm
 
 class RegisterView(CreateView):
     model = get_user_model()
-    template_name = 'account_create.html'
+    template_name = 'registration/account_create.html'
     form_class = MyUserCreationForm
 
     def form_valid(self, form):

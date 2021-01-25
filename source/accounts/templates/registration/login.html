@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Войти{% endblock %}
+{% block title %}{% trans 'Войти' %}{% endblock %}
 {% block login_is_active %}active{% endblock %}
 {% block content %}
 
-    <h1>Вход</h1>
-    {% include 'partial/bootstrap_form.html' with form_method='post' button_text='Войти' %}
+    <h1>{% trans 'Вход' %}</h1>
+    {% include 'partial/bootstrap_form.html' with form_method='post' button_text='Войти' enctype="multipart/form-data" %}
 {% endblock %}
