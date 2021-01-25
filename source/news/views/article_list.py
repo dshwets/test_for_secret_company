@@ -16,4 +16,5 @@ class ArticleListView(PermissionRequiredMixin, FilterView):
     def get_queryset(self):
         if self.kwargs:
             return Article.objects.filter(category_id=self.kwargs['pk']).order_by('-pk')
-        return Article.objects.all().order_by('-pk')
+        else:
+            return Article.objects.all().order_by('-pk')

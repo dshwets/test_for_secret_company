@@ -11,5 +11,5 @@ class ArticleDetailView(PermissionRequiredMixin, DetailView):
     permission_required = 'news.can_view_article'
 
     def has_permission(self):
-        user = self.get_object()
-        return super().has_permission() or user == self.request.user
+        article = self.get_object()
+        return super().has_permission() or article.user_id == self.request.user

@@ -16,7 +16,6 @@
         <p>{% trans 'Был создан' %}: {{ account.created_at }}</p>
         <p>{% trans 'Был обновлен' %}: {{ account.updated_at }}</p>
         <input class="btn btn-danger" type="submit" id="confirm-delete-btn" value="{% trans 'Да' %}">
-{#        TODO изменить юрл на детальный просмотр#}
-        <a class="btn btn-primary" href="{% url 'accounts:account_list' %}">{% trans 'Нет' %}</a>
+        <a class="btn btn-primary" href="{% url 'accounts:account_detail' pk=account.pk %}">{% trans 'Нет' %}</a>
     </form>
 {% endblock %}
