@@ -18,6 +18,12 @@
                 <p>{% trans 'Был создан' %}: {{ account.created_at }}</p>
                 <p>{% trans 'Был обновлен' %}: {{ account.updated_at }}</p>
 
+                {% if perms.accounts.can_delete_user %}
+                    <a href="{% url 'accounts:account_delete' pk=account.pk %}" class="btn btn-danger">
+                        {% trans 'Удалить' %}
+                    </a>
+                {% endif %}
+
             </div>
             </div>
         </div>
