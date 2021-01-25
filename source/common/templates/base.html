@@ -24,6 +24,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
+                {% if perms.accounts.can_view_user %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'accounts:account_list' %}">{% trans 'Список пользователей' %}</a>
+                    </li>
+                {% endif %}
             {% block navs %}
 
             {% endblock %}
