@@ -38,9 +38,14 @@
                         {{ article.category_id }}
                     {% endif %}
                 </p>
-                {% if perms.news.can_change_article or account == request.user %}
+                {% if perms.news.can_change_article or article.user_id == request.user %}
                     <a href="{% url 'news:article_update' pk=article.pk %}" class="btn btn-secondary">
                         {% trans 'Редактировать' %}
+                    </a>
+                {% endif %}
+                {% if perms.news.can_delete_article %}
+                    <a href="{% url 'news:article_delete' pk=article.pk %}" class="btn btn-danger">
+                        {% trans 'Удалить' %}
                     </a>
                 {% endif %}
 {% endblock %}
