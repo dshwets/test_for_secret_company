@@ -10,7 +10,3 @@ class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('news:article_list')
     context_object_name = 'article'
     permission_required = 'news.can_delete_article'
-
-    def has_permission(self):
-        article = self.get_object()
-        return super().has_permission() or article.user_id == self.request.user
