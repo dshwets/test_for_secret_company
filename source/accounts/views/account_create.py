@@ -1,13 +1,14 @@
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView
 from accounts.forms import MyUserCreationForm
+from accounts.models import User
 
 
 class RegisterView(CreateView):
-    model = get_user_model()
-    template_name = 'registration/account_create.html'
+    model = User
+    template_name = 'account_create.html'
     form_class = MyUserCreationForm
 
     def form_valid(self, form):
