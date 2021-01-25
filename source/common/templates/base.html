@@ -18,12 +18,17 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'newscategories:list_newscategory' %}">{% trans 'Новости' %}</a>
+        <a class="navbar-brand" href="{% url 'newscategories:list_newscategory' %}">{% trans 'Категории' %}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
+                {% if perms.news.can_view_article %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'news:article_list' %}">{% trans 'Свежие новости' %}</a>
+                    </li>
+                {% endif %}
                 {% if perms.accounts.can_view_user %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'accounts:account_list' %}">{% trans 'Список пользователей' %}</a>
@@ -64,7 +69,7 @@
 
 </div>
 
-{#<hr>#}
+<hr>
 <div style="background-color:#6c757d; height: 53px;  color: white;  padding-top: 20px;
     position: fixed; margin-top: auto;margin-bottom: 0; bottom: 0;
     width: 100%;" align="center">

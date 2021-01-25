@@ -5,9 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
  {% endblock %}
 {% block navs %}
-    <li class="nav-item active">
-        <a class="nav-link" href="#">{% trans 'Свежие' %}</a>
-    </li>
+
 {% endblock %}
 
 {% block content %}
@@ -28,7 +26,11 @@
                     width='350' height="200">
             {% endif %}
             <div class="card-body">
-            <h5 class="card-title">{{ category.title }}</h5>
+            <h5 class="card-title">
+                <a href="{% url 'news:article_category_list' pk=category.id %}">
+                    {{ category.title }}
+                </a>
+            </h5>
             {% if perms.newscategories.can_delete_category or category.created_by == request.user %}
                 <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
                     {% trans 'Удалить' %}
