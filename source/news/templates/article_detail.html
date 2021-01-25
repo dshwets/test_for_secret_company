@@ -38,4 +38,9 @@
                         {{ article.category_id }}
                     {% endif %}
                 </p>
+                {% if perms.news.can_change_article or account == request.user %}
+                    <a href="{% url 'news:article_update' pk=article.pk %}" class="btn btn-secondary">
+                        {% trans 'Редактировать' %}
+                    </a>
+                {% endif %}
 {% endblock %}
