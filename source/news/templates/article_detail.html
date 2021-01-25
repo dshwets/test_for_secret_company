@@ -6,7 +6,11 @@
  {% endblock %}
 
 {% block content %}
-                <h5 class="card-title">: <b>{{ article.title }}</b></h5>
+                <h5 class="card-title">
+                    <b>
+                        {{ article.title }}
+                    </b>
+                </h5>
                     {% if article.image %}
                         <img src="{{ article.image.url }}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
                              width='350' height="200">
