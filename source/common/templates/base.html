@@ -42,7 +42,10 @@
             {% endif %}
             </ul>
             <span class="navbar-text">
-            Navbar text with an inline element
+            {% if request.user.is_authenticated %}
+                    <a href="{% url 'accounts:account_detail' pk=request.user.pk %}">{% trans 'Привет,' %}
+                        {{ request.user }}</a>
+            {% endif %}
             </span>
         </div>
     </div>
