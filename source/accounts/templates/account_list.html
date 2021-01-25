@@ -23,6 +23,11 @@
                         {% trans 'Удалить' %}
                     </a>
                 {% endif %}
+                {% if perms.accounts.can_delete_user or account == request.user %}
+                    <a href="{% url 'accounts:account_update' pk=account.pk %}" class="btn btn-secondary">
+                        {% trans 'Редактировать' %}
+                    </a>
+                {% endif %}
 
             </div>
             </div>
