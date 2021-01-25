@@ -4,6 +4,14 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
  {% endblock %}
+{% block navs %}
+    <li class="nav-item active">
+        <a class="nav-link" href="#">{% trans 'Свежие' %}</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'accounts:account_list' %}">{% trans 'Список пользователей' %}</a>
+    </li>
+{% endblock %}
 
 {% block content %}
 {% if perms.newscategories.can_add_category %}
