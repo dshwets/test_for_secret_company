@@ -6,6 +6,10 @@
  {% endblock %}
 
 {% block content %}
+<form class="form-inline my-2 my-lg-0"  method="get">
+    {{ filter.form}}
+    <button class="btn btn-info my-2 my-sm-0" type="submit">{% trans 'Поиск'%}</button>
+</form>
 <div class="row row-cols-1 row-cols-md-3 mt-5">
         {% for account in accounts %}
         <div class="col mb-4">
