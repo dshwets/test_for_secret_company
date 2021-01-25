@@ -23,6 +23,11 @@
                         {% trans 'Редактировать' %}
                     </a>
                 {% endif %}
+                {% if account == request.user %}
+                    <a href="{% url 'accounts:account_change_password' %}" class="btn btn-secondary">
+                        {% trans 'Сменить пароль' %}
+                    </a>
+                {% endif %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
