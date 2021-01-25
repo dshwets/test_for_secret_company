@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from common.models import AbstractDatetimeModel
 
-class Article(models.Model):
+
+class Article(AbstractDatetimeModel):
     category_id = models.ForeignKey(
         'newscategories.Category',
         related_name='articles',
