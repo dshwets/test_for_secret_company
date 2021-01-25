@@ -15,7 +15,7 @@
     <div class="row row-cols-1 row-cols-md-3 mt-5">
             {% for article in articles %}
             <div class="col mb-4">
-                <div class="card text-white bg-info mb-3">
+                <div class="card text-black bg-light mb-3">
                     {% if article.image %}
                         <img src="{{ article.image.url }}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
                              width='350' height="200">
@@ -26,9 +26,21 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         <b>{% trans 'Заголовок' %}:</b>
+                        <a href="{% url 'news:article_detail' pk=article.pk%}">
                             {{ article.title }}
+                        </a>
                     </h5>
                     <p>{% trans 'Была создана' %}: {{ article.created_at }}</p>
+                    <p>
+                        {% trans 'Категория' %}:
+                        {% if article.category_id %}
+                            <a href="{% url 'news:article_category_list' pk=article.category_id.pk %}">
+                                {{ article.category_id.title }}
+                            </a>
+                        {% else %}
+                            {% trans 'Нет.' %}
+                        {% endif %}
+                    </p>
                 </div>
                 </div>
             </div>
