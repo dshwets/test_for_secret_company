@@ -8,7 +8,7 @@ from newscategories.views.news_category_update import NewsCategoryUpdateView
 app_name = 'newscategories'
 
 urlpatterns = [
-    path('categories/', NewsCategoriesListView.as_view(), name='list_newscategory'),
+    path('', NewsCategoriesListView.as_view(), name='list_newscategory'),
     path('categories/create/', NewsCategoryCreateView.as_view(), name='create_newscategory'),
     path('categories/<int:pk>/delete/', NewsCategoryDeleteView.as_view(), name='delete_newscategory'),
     path('categories/<int:pk>/update/', NewsCategoryUpdateView.as_view(), name='update_newscategory'),
