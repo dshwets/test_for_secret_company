@@ -27,9 +27,13 @@
             {% endif %}
             <div class="card-body">
             <h5 class="card-title">
+                {% if perms.news.can_view_article %}
                 <a href="{% url 'news:article_category_list' pk=category.id %}">
                     {{ category.title }}
                 </a>
+                {% else %}
+                    {{ category.title }}
+                {% endif %}
             </h5>
             {% if perms.newscategories.can_delete_category or category.created_by == request.user %}
                 <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
