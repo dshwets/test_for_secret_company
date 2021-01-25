@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Удаление статьи' %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% if article.image %}
+                <img src="{{ article.image.url }}" class="card-img-top col-md-4" alt="{% trans 'Изображение статьи'%}"
+                     width='350' height="200">
+            {% else %}
+                <img src="{% static 'img/news.jpg' %}" class="card-img-top col-md-4" alt="{% trans 'Изображение статьи'%}"
+                    width='350' height="200">
+            {% endif %}
+        <h3 class="my-5">{% trans 'Вы уверены, что хотите удалить статью ' %}{{ article.title }} ?</h3>
+        <input class="btn btn-danger" type="submit" id="confirm-delete-btn" value="{% trans 'Да' %}">
+        <a class="btn btn-primary" href="{% url 'news:article_detail' pk=article.pk %}">{% trans 'Нет' %}</a>
+    </form>
+{% endblock %}
