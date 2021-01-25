@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ {% endblock %}
+
+
+{% block content %}
+{% if articles %}
+    <form class="form-inline my-2 my-lg-0"  method="get">
+        {{ filter.form}}
+        <button class="btn btn-info my-2 my-sm-0" type="submit">{% trans 'Поиск'%}</button>
+    </form>
+    <div class="row row-cols-1 row-cols-md-3 mt-5">
+            {% for article in articles %}
+            <div class="col mb-4">
+                <div class="card text-white bg-info mb-3">
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
+                             width='350' height="200">
+                    {% else %}
+                        <img src="{% static 'img/article_default.jpg' %}" class="card-img-top" alt="{% trans 'Изображение статьи'%}"
+                            width='350' height="200">
+                    {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <b>{% trans 'Заголовок' %}:</b>
+                            {{ article.title }}
+                    </h5>
+                    <p>{% trans 'Была создана' %}: {{ article.created_at }}</p>
+                </div>
+                </div>
+            </div>
+      {% endfor %}
+    </div>
+{% else %}
+    <h5>{% trans 'Кажется тут совсем нет новостей, приходите позже :С' %}</h5>
+{% endif %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
