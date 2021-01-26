@@ -3,13 +3,14 @@ from factory.fuzzy import FuzzyText
 
 from accounts.factories import UserFactory
 from news.models import Article
+from newscategories.factories import CategoriesFactory
 
 
 class ArticleFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Article
 
-    category_id = None
+    category_id = factory.SubFactory(CategoriesFactory)
 
     user_id = factory.SubFactory(
         UserFactory,
