@@ -11,6 +11,3 @@ class NewsCategoryDeleteView(PermissionRequiredMixin, DeleteView):
     context_object_name = 'category'
     permission_required = 'newscategories.can_delete_category'
 
-    def has_permission(self):
-        category = self.get_object()
-        return super().has_permission() or category.created_by == self.request.user

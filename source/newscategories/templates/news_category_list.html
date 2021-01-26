@@ -36,7 +36,7 @@
                     {{ category.title }}
                 {% endif %}
             </h5>
-            {% if perms.newscategories.can_delete_category or category.created_by == request.user %}
+            {% if perms.newscategories.can_delete_category%}
                 <a href="{% url 'newscategories:delete_newscategory' pk=category.pk %}" class="btn btn-danger">
                     {% trans 'Удалить' %}
                 </a>
