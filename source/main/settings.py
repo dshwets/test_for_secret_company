@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'bootstrap4',
     'news',
-    'newscategories'
+    'newscategories',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -131,3 +132,8 @@ LANGUAGES = (
 )
 LOGIN_REDIRECT_URL = 'newscategories:list_newscategory'
 LOGOUT_REDIRECT_URL = 'newscategories:list_newscategory'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
