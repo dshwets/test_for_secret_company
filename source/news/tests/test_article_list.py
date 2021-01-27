@@ -9,7 +9,6 @@ class ArticleListViewTestCase(TestCase):
     def setUp(self) -> None:
         self.article = ArticleFactory()
         self.user = UserFactory(username='some_admin')
-        self.permission = Permission.objects.get(codename='can_view_article')
         self.url = reverse('news:article_list')
         self.url_with_pk = reverse('news:article_category_list', kwargs={'pk': self.article.category_id.pk})
 
@@ -24,16 +23,7 @@ class ArticleListViewTestCase(TestCase):
         self.assertRedirects(response, redirect_url, status_code=302)
         self.assertRedirects(response_with_pk, redirect_url_with_pk, status_code=302)
 
-
-    def test_authorized_without_permission_get_article_list(self):
-        self.client.login(username='some_admin', password='pass')
-        response = self.client.get(self.url)
-        response_with_pk = self.client.get(self.url_with_pk)
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(response_with_pk.status_code, 403)
-
-    def test_authorized_get_request_has_perm_category_list(self):
-        self.user.user_permissions.add(self.permission)
+    def test_authorized_get_request_article_list(self):
         self.client.login(username='some_admin', password='pass')
         response = self.client.get(self.url)
         response_with_pk = self.client.get(self.url_with_pk)

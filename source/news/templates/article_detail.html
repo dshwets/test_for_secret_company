@@ -30,7 +30,7 @@
                     {% endif %}
                 </p>
                 <p>{% trans 'Категория' %}:
-                    {% if perms.newscategories.can_view_category %}
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'news:article_category_list' pk=article.category_id.pk %}">
                         {{ article.category_id }}
                     </a>

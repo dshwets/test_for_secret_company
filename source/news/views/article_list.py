@@ -1,15 +1,14 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django_filters.views import FilterView
 
 from news.filters.filter import ArticleSearch
 from news.models import Article
 
 
-class ArticleListView(PermissionRequiredMixin, FilterView):
+class ArticleListView(LoginRequiredMixin, FilterView):
     template_name = 'article_list.html'
     filterset_class = ArticleSearch
     context_object_name = 'articles'
-    permission_required = 'news.can_view_article'
     paginate_by = 9
     paginate_orphans = 2
 

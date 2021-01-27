@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                {% if perms.news.can_view_article %}
+                {% if request.user.is_authenticated %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'news:article_list' %}">{% trans 'Свежие новости' %}</a>
                     </li>

@@ -22,7 +22,7 @@ class ArticleFactory(factory.django.DjangoModelFactory):
     )
 
     description = FuzzyText(
-        length=150
+        length=100
     )
 
     image = factory.django.ImageField()
