@@ -47,7 +47,6 @@ class AccountListViewTestCase(TestCase):
         self.assertNotEqual(response.context_data['accounts'], response_failed_search.context_data['accounts'])
         self.assertNotEqual(response.context_data['accounts'].count(), response_failed_search.context_data['accounts'].count())
 
-
     def assert_response_status(self, url, method, code):
         if method == "get":
             response = self.client.get(url)

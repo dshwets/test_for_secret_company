@@ -48,7 +48,7 @@ class AccountUpdateTestCase(TestCase):
         self.assertTemplateUsed('account_update.html')
         self.assert_response_status(self.url, 'get', 200)
 
-    def test_authorized_with_permission_post_update_product(self):
+    def test_authorized_with_permission_post_update_account(self):
         data = self.common_data()
         self.user.user_permissions.add(self.permission)
         self.client.login(username='some_admin', password='pass')
@@ -63,7 +63,7 @@ class AccountUpdateTestCase(TestCase):
         redirect_url = reverse('accounts:account_detail', kwargs={'pk': self.user_for_change.pk})
         self.assertEqual(response.url, redirect_url)
 
-    def test_authorized_with_permission_post_update_product_with_empty_title(self):
+    def test_authorized_with_permission_post_update_account_with_empty_title(self):
         data = {
             'username': '',
             'first_name': 'test_first_name',

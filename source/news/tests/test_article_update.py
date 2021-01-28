@@ -58,7 +58,7 @@ class ArticleUpdateTestCase(TestCase):
         redirect_url = reverse('news:article_detail', kwargs={'pk': self.article.pk})
         self.assertEqual(response.url, redirect_url)
 
-    def test_authorized_with_permission_post_update_product_with_empty_title(self):
+    def test_authorized_with_permission_post_update_article_with_empty_title(self):
         data = self.data
         data['title'] = ''
         self.user.user_permissions.add(self.permission)

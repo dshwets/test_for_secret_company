@@ -44,8 +44,8 @@ class CategoryDeleteTestCase(TestCase):
         self.client.login(username='some_admin', password='pass')
         self.assert_response_status(reverse('newscategories:delete_newscategory', args=(self.category.id,)), 'post', 302)
 
-    def test_category_delete_authorized_post_request_has_perm_employee_not_found(self):
+    def test_category_delete_authorized_post_request_has_perm_category_not_found(self):
         self.user.user_permissions.add(self.permission)
         self.client.login(username='some_admin', password='pass')
-        employee_wrong_id = self.category.id+10
-        self.assert_response_status(reverse('newscategories:delete_newscategory', args=(employee_wrong_id,)), 'get', 404)
+        category_wrong_id = self.category.id+10
+        self.assert_response_status(reverse('newscategories:delete_newscategory', args=(category_wrong_id,)), 'get', 404)
