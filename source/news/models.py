@@ -9,6 +9,7 @@ class Article(AbstractDatetimeModel):
         'newscategories.Category',
         related_name='articles',
         null=True,
+        blank=True,
         on_delete=models.SET_NULL,
         verbose_name=_('Категория'),
     )
