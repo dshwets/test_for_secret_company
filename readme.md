@@ -1,4 +1,4 @@
-![Тестовое задание](https://lh3.googleusercontent.com/proxy/1j83Yu4UOiDFrzjAy8ZHAUwyEM0xYIo1th-RpyTnqKcP_WW3pM8cAy-ZNwNF42yE-SoO1aO2VDfZKobYj_kCJ3WX__U)
+![Тестовое задание](http://memesmix.net/media/created/6d7isv.jpg)
 # Административная панель для мобильного новостного клиента.
 Технология: Python3.8, Django2.2, Bootstrap4, Django Rest Framework 3.12, Factory-boy 3.1, Django-filters 3.12
 
@@ -9,13 +9,15 @@
 в переменные окружения!
 
 Как запустить эту штуковину ?
-1) склонировать проект с гитхаба
-2) выполнить комманду ```virtualenv -p python3 venv```
-3) Активировать виртуальное окружение ```. venv/bin/activate```
-4) Установить все необходимые для работы проекта либы ```pip install -r requirements.txt```
-5) Провести миграции: ```./manage.py migrate```
-6) Создать суперюзера ``` ./manage.py createsuperuser```
-7) Наслаждаться рабочим приложением.
+1) склонировать проект с гитхаба ```git clone https://github.com/dshwets/test_for_secret_company```
+2) зайти в папку проекта ```cd test_for_secret_company/```
+3) выполнить комманду ```virtualenv -p python3 venv```
+4) Активировать виртуальное окружение ```. venv/bin/activate```
+5) Установить все необходимые для работы проекта либы ```pip install -r requirements.txt```
+6) Провести миграции: ```./source/manage.py migrate```
+7) Создать суперюзера ``` ./source/manage.py createsuperuser```
+8) Запустить приложение коммандой : ```./source/manage.py runserver```
+9) Наслаждаться рабочим приложением.
 
 ![Ты потрясающий](https://memepedia.ru/wp-content/uploads/2019/06/kianu-rivz-govorit-ty-potryasayuschiy.jpg)
 
@@ -107,16 +109,34 @@
 Для их использования нужно импортировать файл ```factories.py``` из соответствующего приложения.
 Вызвав соответствующий класс вы сможете беспрепятственно создать сколько угодно объектов(пользователей, статей
 и категорий)
-Пример создания статьи с помощью фабрики в патон консоли пайчарма:
-  ```from news.factories import ArticleFactory```
+Пример создания статьи с помощью фабрики в джанго консоли :
 
-После импорта введите комманду ```ArticleFactory()```
+Активирйте джанго консоль. Находясь в папке **test_for_secret_company** вам необходимо выполнить команду:
+    
+    ./source/manage.py shell
+После чего вы можете выполнить следующую команду, которая импортирует все фабрики из пректа:
 
-Весь функционал проекта покрыт юнит тестами, которые проверяют работоспособность вьюшек, а именно доступы, используемые шалоны, получаемые данные и т д.
+    from news.factories import ArticleFactory
+    from newscategories.factories import CategoriesFactory
+    from accounts.factories import UserFactory
+    
+
+После импорта вы можете вызвать каждый из импортированных классов - это создаст экземпляр объекта.
+ 
+ Пример использования:
+
+ * ```ArticleFactory()``` -  создаст статью.
+ * ```CategoriesFactory()``` -  создаст категорию.
+ * ```UserFactory()``` -  создаст пользователя.
+
+Весь функционал проекта покрыт юнит тестами, которые проверяют работоспособность вьюшек и апи, а именно доступы, используемые шалоны, получаемые данные и т д.
 Для запуска тестов необходимо выполнить команду:
-```./manage.py test```
+
+    cd source
+    ./manage.py test
 
 ###Куда звонить если все сломалось и ниего не работает ?
+
 ![Картинка горящего дома](https://memepedia.ru/wp-content/uploads/2017/04/disaster-girl.jpg)
 
 В случае если у вас возникли проблемы с приложением прошу связаться со мной по почте dshwets@gmail.com
