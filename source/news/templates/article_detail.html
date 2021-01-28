@@ -30,12 +30,12 @@
                     {% endif %}
                 </p>
                 <p>{% trans 'Категория' %}:
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated  and article.category_id.pk%}
                     <a href="{% url 'news:article_category_list' pk=article.category_id.pk %}">
                         {{ article.category_id }}
                     </a>
                     {% else %}
-                        {{ article.category_id }}
+                        {% trans 'Без Категории.' %}
                     {% endif %}
                 </p>
                 {% if perms.news.can_change_article or article.user_id == request.user %}
